@@ -46,7 +46,7 @@ function checkout() {
                 key={i}
                 id={item.id}
                 title={item.title}
-                price={item.price}
+                price={item.indianprice}
                 description={item.description}
                 category={item.category}
                 image={item.image}

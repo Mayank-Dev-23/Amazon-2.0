@@ -23,7 +23,7 @@ function Product({id,title,category,description,price,image}) {
         Math.floor(Math.random()* (max-min +1)) + min
     )
     const[hasprime] =useState(Math.random() < 0.5);
-  
+  const indianprice=price*72
     
 
     const addtobasket =()=>{
@@ -32,7 +32,7 @@ function Product({id,title,category,description,price,image}) {
             title,
             category,
             description,
-            price,
+            indianprice,
             image,
             rating,
             hasprime,
@@ -77,7 +77,7 @@ function Product({id,title,category,description,price,image}) {
 
       <p className="text-xs my-2 line-clamp-3">{description}</p>
       <div className="mb-5"> 
-     <Currency  quantity={price} currency="INR"/>
+     <Currency  quantity={indianprice} currency="INR"/>
      </div>
      {hasprime && (
          <div className="flex space-x-2 items-center -mt-4  p-2 rounded-md  ">
