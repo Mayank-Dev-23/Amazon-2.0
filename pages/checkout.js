@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import CheckoutProduct from "../Components/CheckoutProduct";
 import {selectUser} from "../slices/userSlice"
 import Currency from "react-currency-formatter"
+import { motion } from "framer-motion"
 
 
 
@@ -19,7 +20,13 @@ function checkout() {
 
 
   return (
-    <div className="bg-gray-100  ">
+    <motion.div
+    initial={{x:100 ,opacity:0}}
+    animate={{x:0 ,opacity:1}}
+    
+    className="bg-gray-100  "
+    
+    >
       
       <Head>
             <title>
@@ -29,7 +36,10 @@ function checkout() {
         <Header />
      
       
-      <main className="max-w-7xl mx-auto flex flex-col md:flex-row p-2">
+      <motion.main 
+      initial={{y:100 ,opacity:0}}
+      animate={{y:0,opacity:1}}
+      className="max-w-7xl mx-auto flex flex-col md:flex-row p-2">
         <div className="flex-grow m-4 shadow-md ">
           <img
             src="/banner.png"
@@ -70,8 +80,8 @@ function checkout() {
             </div>
           )}
            
-      </main>
-    </div>
+      </motion.main>
+    </motion.div>
   
   );
 }

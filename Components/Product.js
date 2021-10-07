@@ -7,6 +7,7 @@ import { useState } from "react";
 import Currency from "react-currency-formatter";
 import {useDispatch} from "react-redux"
 import { addToBasket, selectItems } from "../slices/basketSlice";
+import {motion} from "framer-motion";
 
 
 function Product({id,title,category,description,price,image}) {
@@ -44,7 +45,11 @@ function Product({id,title,category,description,price,image}) {
   
     return (
        
-<div key={id}  className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-md rounded-md group transition transform hover:scale-105">
+<motion.div 
+initial={{y:100 ,opacity:0}}
+animate={{y:0 ,opacity:1}}
+transition={{duration:0.7}}
+key={id}  className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-md rounded-md group transition transform hover:scale-105">
 
     
        <p  className="absolute top-2 right-6 text-gray-400 text-xs ">{category}</p>
@@ -92,7 +97,7 @@ function Product({id,title,category,description,price,image}) {
       
       <Button variant="contained" color="primary"   onClick={addtobasket}>Add to Basket</Button>
     
-</div>
+</motion.div>
 
        
     )

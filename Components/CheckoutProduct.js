@@ -6,11 +6,10 @@ import {
   addToBasket,
   decreasequantity,
   removeFromBasket,
-
- 
 } from "../slices/basketSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 function CheckoutProduct({
   id,
@@ -24,10 +23,6 @@ function CheckoutProduct({
   quantity,
 }) {
   const dispatch = useDispatch();
-   
-
-
- 
 
   const addtobasket = () => {
     const product = {
@@ -39,14 +34,13 @@ function CheckoutProduct({
       image,
       rating,
       hasprime,
-    
-      
     };
 
     dispatch(addToBasket(product));
   };
 
   const removefrombasket = () => {
+   
     dispatch(removeFromBasket({ id }));
   };
 
@@ -54,8 +48,17 @@ function CheckoutProduct({
     dispatch(decreasequantity({ id }));
   };
 
+ 
+
   return (
-    <div className="grid grid-cols-6 mb-5  p-5 bg-white shadow-md hover:scale-105 transform transition rounded-md">
+    <motion.div 
+    initial={{y:-90,opacity:0}}
+    animate={{y:0,opacity:1}}
+    transition={{duration:0.6}}
+    exit={{opacity:0}}
+     
+    
+    className="grid grid-cols-6 mb-5  p-5 bg-white shadow-md hover:scale-105 transform transition rounded-md border-t-black border-2">
       <Image src={image} height={200} width={200} objectFit="contain" />
 
       <div className="col-span-4 mx-5">
@@ -70,22 +73,26 @@ function CheckoutProduct({
         <p className="line-clamp-2 text-xs  my-2">{description}</p>
         <div className="flex text-xs sm:text-sm md:text-md lg:text-lg">
           <Currency quantity={price} currency="INR" />
-          <span > <span className="ml-1"> X</span> {quantity} = <Currency quantity={price*quantity} currency="INR" />
+          <span>
+            {" "}
+            <span className="ml-1"> X</span> {quantity} ={" "}
+            <Currency quantity={price * quantity} currency="INR" />
           </span>
-        
         </div>
 
         {hasprime && (
           <div className="flex items-center space-x-1">
             <img src="/primetag.png" className="w-12" />
-            <p className="text-xs text-gray-400 line-clamp-1">FREE Next day Delivery</p>
+            <p className="text-xs text-gray-400 line-clamp-1">
+              FREE Next day Delivery
+            </p>
           </div>
         )}
       </div>
       <div className=" flex flex-col my-auto col-span-1justify-self-end  ">
         <div className="flex mb-10 justify-center">
           <button
-            className="bg-gray-100 w-8  p-1 rounded-sm"
+            className="bg-gray-100 w-12  p-1 rounded-sm"
             onClick={decreaseQuantity}
           >
             -
@@ -94,18 +101,17 @@ function CheckoutProduct({
             {quantity}
           </p>
           <button
-            className="bg-gray-100 w-8 p-1 rounded-sm "
+            className="bg-gray-100 w-12 p-1 rounded-sm "
             onClick={addtobasket}
           >
             +
           </button>
         </div>
+
+        <div className="flex justify-center"
         
-
-        <div className="flex justify-center">
-
-          <IconButton aria-label="delete"
-           onClick={removefrombasket}>
+        >
+          <IconButton aria-label="delete" onClick={removefrombasket}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-red-500"
@@ -119,10 +125,9 @@ function CheckoutProduct({
               />
             </svg>
           </IconButton>
-          </div>
         </div>
       </div>
-  
+    </motion.div>
   );
 }
 

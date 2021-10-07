@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { auth, provider } from "../firebase";
 import { login } from "../slices/userSlice";
 import {useRouter} from "next/router";
-
+import {motion} from "framer-motion"
 
 
 function Login() {
@@ -28,7 +28,11 @@ function Login() {
   }
 
   return (
-    <div className="grid place-content-center h-screen bg-gray-100 px-10">
+    <motion.div 
+    initial={{y:-100 ,opacity:0}}
+    animate={{y:0,opacity:1}}
+    transition={{duration:0.5}}
+    className="grid place-content-center h-screen bg-gray-100 px-10">
       <Head>
         <title>Login</title>
       </Head>
@@ -43,7 +47,7 @@ rounded-md"
           SignIn with Google
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

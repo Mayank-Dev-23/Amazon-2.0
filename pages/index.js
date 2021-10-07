@@ -10,6 +10,7 @@ import { auth } from "../firebase";
 import { useEffect ,useState} from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {motion} from "framer-motion";
 
 
 export default function Home({ products }) {
@@ -35,7 +36,10 @@ export default function Home({ products }) {
 
   return (
    mounted &&
-      <div className="bg-gray-200">
+      <motion.div
+     initial={{x:60, opacity:0}}
+     animate={{x:0 ,opacity:1}}
+      className="bg-gray-200">
       <Head>
         <title>Amazon</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -48,7 +52,7 @@ export default function Home({ products }) {
       <main className="max-w-screen-7xl mx-auto -mt-16">
         <Productfeed products={products} />
       </main>
-    </div>
+    </motion.div>
   
    
   );
