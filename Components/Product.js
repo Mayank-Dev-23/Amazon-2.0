@@ -10,6 +10,7 @@ import { addToBasket, selectItems } from "../slices/basketSlice";
 import {motion} from "framer-motion";
 
 
+
 function Product({id,title,category,description,price,image}) {
    
     const dispatch = useDispatch();
@@ -53,31 +54,28 @@ key={id}  className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-md rou
 
     
        <p  className="absolute top-2 right-6 text-gray-400 text-xs ">{category}</p>
-       <div className="flex justify-center relative  bg-white p-1 ">
+     
+       <div className="flex justify-center relative  bg-white p-1  ">
        <Image src={image}
        objectFit="contain"
        width={200}
        height={200}
+      
+
        
        />
      
       
-       <div className="absolute group-hover:bg-gray-200 inset-0 opacity-30
-      cursor-pointer  transition transform duration-200 ease-in z-20
-       ">
-           
+       
        </div>
-       <button className="absolute bg-white p-2 top-1/2 rounded-md text-xs opacity-0
-       group-hover:opacity-100 z-30 shadow-lg transition transform duration-200 ease-in
-       ">View Product</button>
-       </div>
+      
        
 
        <h4 className="my-3 line-clamp-1">{title}</h4>
        <div className="flex">
-      {Array(rating).fill().map((_,i)=>{
+      {Array(rating).fill().map((_,i)=>(
           <StarIcon className="h-6 text-yellow-300" />
-})}
+      ))}
       </div>
 
       <p className="text-xs my-2 line-clamp-3">{description}</p>

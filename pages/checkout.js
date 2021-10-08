@@ -36,9 +36,8 @@ function checkout() {
         <Header />
      
       
-      <motion.main 
-      initial={{y:100 ,opacity:0}}
-      animate={{y:0,opacity:1}}
+      <main 
+     
       className="max-w-7xl mx-auto flex flex-col md:flex-row p-2">
         <div className="flex-grow m-4 shadow-md ">
           <img
@@ -80,7 +79,7 @@ function checkout() {
             </div>
           )}
            
-      </motion.main>
+      </main>
     </motion.div>
   
   );

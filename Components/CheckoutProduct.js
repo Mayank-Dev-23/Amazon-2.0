@@ -56,6 +56,8 @@ function CheckoutProduct({
     animate={{y:0,opacity:1}}
     transition={{duration:0.6}}
     exit={{opacity:0}}
+    whileTap={{opacity:0.6}}
+  
      
     
     className="grid grid-cols-6 mb-5  p-5 bg-white shadow-md hover:scale-105 transform transition rounded-md border-t-black border-2">
@@ -108,8 +110,8 @@ function CheckoutProduct({
           </button>
         </div>
 
-        <div className="flex justify-center"
-        
+        <motion.div className="flex justify-center"
+     
         >
           <IconButton aria-label="delete" onClick={removefrombasket}>
             <svg
@@ -125,7 +127,7 @@ function CheckoutProduct({
               />
             </svg>
           </IconButton>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
